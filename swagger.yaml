@@ -1,0 +1,459 @@
+openapi: 3.0.0
+info:
+  title: IMDb
+  contact: {}
+  version: '1.0'
+servers:
+  - url: https://ice-movie-IMDb.onrender.com/api/v1
+    variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/RegisterRequest'
+                - example:
+                    name: amir
+                    email: amir@gmail.com
+                    password: '0926979493'
+            example:
+              name: amir
+              email: amir@gmail.com
+              password: '0926979493'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/logout:
+    get:
+      tags:
+        - Auth
+      summary: Log Out
+      operationId: LogOut
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Log In
+      operationId: LogIn
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/LogInRequest'
+                - example:
+                    email: aliakbar@gmail.com
+                    password: '0926979493'
+            example:
+              email: aliakbar@gmail.com
+              password: '0926979493'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /movies:
+    get:
+      tags:
+        - Movies
+      summary: Get All Movies
+      operationId: GetAllMovies
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+        - Movies
+      summary: Create Movie
+      operationId: CreateMovie
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CreateMovieRequest'
+                - example:
+                    title: The Kid
+                    poster: https://moviesapi.ir/images/tt0012349_poster.jpg
+                    year: '1921'
+                    released: 06 Feb 1921
+                    runtime: 68 min
+                    director: Charles Chaplin
+                    writer: Charles Chaplin
+                    actors: Carl Miller, Edna Purviance, Jackie Coogan, Charles Chaplin
+                    plot: The Tramp cares for an abandoned child, but events put that relationship in jeopardy.
+                    country: USA
+                    awards: 1 win.
+                    metascore: N/A
+                    imdb_rating: '8.3'
+                    type: movie
+                    genres:
+                      - Comedy
+                      - Drama
+                      - Family
+                    images:
+                      - https://moviesapi.ir/images/tt0012349_screenshot1.jpg
+                      - https://moviesapi.ir/images/tt0012349_screenshot2.jpg
+                      - https://moviesapi.ir/images/tt0012349_screenshot3.jpg
+            example:
+              title: The Kid
+              poster: https://moviesapi.ir/images/tt0012349_poster.jpg
+              year: '1921'
+              released: 06 Feb 1921
+              runtime: 68 min
+              director: Charles Chaplin
+              writer: Charles Chaplin
+              actors: Carl Miller, Edna Purviance, Jackie Coogan, Charles Chaplin
+              plot: The Tramp cares for an abandoned child, but events put that relationship in jeopardy.
+              country: USA
+              awards: 1 win.
+              metascore: N/A
+              imdb_rating: '8.3'
+              type: movie
+              genres:
+                - Comedy
+                - Drama
+                - Family
+              images:
+                - https://moviesapi.ir/images/tt0012349_screenshot1.jpg
+                - https://moviesapi.ir/images/tt0012349_screenshot2.jpg
+                - https://moviesapi.ir/images/tt0012349_screenshot3.jpg
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /movies/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The movie ID
+    get:
+      tags:
+        - Movies
+      summary: Get Single Movie
+      operationId: GetSingleMovie
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    patch:
+      tags:
+        - Movies
+      summary: Update Movie
+      operationId: UpdateMovie
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/UpdateMovieRequest'
+                - example:
+                    metascore: '82'
+            example:
+              metascore: '82'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+
+    delete:
+      tags:
+        - Movies
+      summary: Delete Movie
+      operationId: DeleteMovie
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /reviews:
+    get:
+      tags:
+        - Reviews
+      summary: Get All Reviews
+      operationId: GetAllReviews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+        - Reviews
+      summary: Create Review
+      operationId: CreateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CreateReviewRequest'
+                - example:
+                    movie: 64d68db6aff0dd3ba6ecea9b
+                    rating: 5
+                    title: Best Movie
+                    comment: it was the best movie that i have ever seen in my entire life
+            example:
+              movie: 64d68db6aff0dd3ba6ecea9b
+              rating: 5
+              title: Best Movie
+              comment: it was the best movie that i have ever seen in my entire life
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /reviews/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The review ID
+    patch:
+      tags:
+        - Reviews
+      summary: Update Review
+      operationId: UpdateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/UpdateReviewRequest'
+                - example:
+                    title: Best Film
+            example:
+              title: Best Film
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+        - Reviews
+      summary: Delete Review
+      operationId: DeleteReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+        - name
+        - email
+        - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: amir
+        email: amir@gmail.com
+        password: '0926979493'
+    LogInRequest:
+      title: LogInRequest
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: aliakbar@gmail.com
+        password: '0926979493'
+    CreateMovieRequest:
+      title: CreateMovieRequest
+      required:
+        - title
+        - poster
+        - year
+        - released
+        - runtime
+        - director
+        - writer
+        - actors
+        - plot
+        - country
+        - awards
+        - metascore
+        - imdb_rating
+        - type
+        - genres
+        - images
+      type: object
+      properties:
+        title:
+          type: string
+        poster:
+          type: string
+        year:
+          type: string
+        released:
+          type: string
+        runtime:
+          type: string
+        director:
+          type: string
+        writer:
+          type: string
+        actors:
+          type: string
+        plot:
+          type: string
+        country:
+          type: string
+        awards:
+          type: string
+        metascore:
+          type: string
+        imdb_rating:
+          type: string
+        type:
+          type: string
+        genres:
+          type: array
+          items:
+            type: string
+          description: ''
+        images:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        title: The Kid
+        poster: https://moviesapi.ir/images/tt0012349_poster.jpg
+        year: '1921'
+        released: 06 Feb 1921
+        runtime: 68 min
+        director: Charles Chaplin
+        writer: Charles Chaplin
+        actors: Carl Miller, Edna Purviance, Jackie Coogan, Charles Chaplin
+        plot: The Tramp cares for an abandoned child, but events put that relationship in jeopardy.
+        country: USA
+        awards: 1 win.
+        metascore: N/A
+        imdb_rating: '8.3'
+        type: movie
+        genres:
+          - Comedy
+          - Drama
+          - Family
+        images:
+          - https://moviesapi.ir/images/tt0012349_screenshot1.jpg
+          - https://moviesapi.ir/images/tt0012349_screenshot2.jpg
+          - https://moviesapi.ir/images/tt0012349_screenshot3.jpg
+    UpdateMovieRequest:
+      title: UpdateMovieRequest
+      required:
+        - metascore
+      type: object
+      properties:
+        metascore:
+          type: string
+      example:
+        metascore: '82'
+    CreateReviewRequest:
+      title: CreateReviewRequest
+      required:
+        - movie
+        - rating
+        - title
+        - comment
+      type: object
+      properties:
+        movie:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        title:
+          type: string
+        comment:
+          type: string
+      example:
+        movie: 64d68db6aff0dd3ba6ecea9b
+        rating: 5
+        title: Best Movie
+        comment: it was the best movie that i have ever seen in my entire life
+    UpdateReviewRequest:
+      title: UpdateReviewRequest
+      required:
+        - title
+      type: object
+      properties:
+        title:
+          type: string
+      example:
+        title: Best Film
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+  - httpBearer: []
+tags:
+  - name: Auth
+  - name: Movies
+  - name: Reviews
