@@ -40,10 +40,10 @@ const authRouter = require('./routes/authRoutes');
 const movieRouter = require('./routes/movieRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 
-// app.get('/', (req, res) => {
-//   res.send('<a href="/api-docs">documentation</a>');
-// });
-app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+app.get('/', (req, res) => {
+  res.send('<a href="/api-docs">swagger</a>');
+});
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/movies', movieRouter);
 app.use('/api/v1/reviews', reviewRouter);
