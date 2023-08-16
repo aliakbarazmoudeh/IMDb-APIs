@@ -14,23 +14,23 @@ const swaggerDocument = YAML.load('./swagger.yaml');
 
 // rest packages
 const cookieParser = require('cookie-parser');
-const rateLimiter = require('express-rate-limit');
-const helmet = require('helmet');
-const xss = require('xss-clean');
+// const rateLimiter = require('express-rate-limit');
+// const helmet = require('helmet');
+// const xss = require('xss-clean');
 const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
 
 // use packages
-app.set('trust proxy', 1);
-app.use(
-  rateLimiter({
-    windowMs: 15 * 60 * 1000,
-    max: 60,
-  })
-);
-app.use(express.json());
-app.use(helmet());
-app.use(xss());
+// app.set('trust proxy', 1);
+// app.use(
+//   rateLimiter({
+//     windowMs: 15 * 60 * 1000,
+//     max: 60,
+//   })
+// );
+// app.use(express.json());
+// app.use(helmet());
+// app.use(xss());
 app.use(cors());
 app.use(mongoSanitize());
 app.use(cookieParser(process.env.JWT_SECRET));
