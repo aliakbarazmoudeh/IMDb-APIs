@@ -4,7 +4,7 @@ info:
   contact: {}
   version: '1.0'
 servers:
-  - url: https://ice-movie-imdb.onrender.com/api/v1
+  - url: https://barons-movie.onrender.com
     variables: {}
 paths:
   /auth/register:
