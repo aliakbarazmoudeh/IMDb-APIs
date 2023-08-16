@@ -9,7 +9,7 @@ const createToken = (res, { _id: userID, name: name, role: role }) => {
 
   res
     .status(StatusCodes.OK)
-    .cookie('token', token, { httpOnly: true, signed: true, secure: true })
+    .cookie('token', token, { httpOnly: true, signed: true })
     .json({ token });
 };
 
