@@ -48,6 +48,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
+      security: []
   /auth/login:
     post:
       tags:
@@ -74,6 +75,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
+      security: []
   /movies:
     get:
       tags:
@@ -151,14 +153,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /movies/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-        description: The movie ID
+  /movies/64d68db6aff0dd3ba6ecea9b:
     get:
       tags:
         - Movies
@@ -193,7 +188,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-
+  /movies/64d68e0caff0dd3ba6eceb5d:
     delete:
       tags:
         - Movies
@@ -246,14 +241,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /reviews/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-        description: The review ID
+  /reviews/64dbdc0a9f95b425025693d5:
     patch:
       tags:
         - Reviews
@@ -277,6 +265,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
+  /reviews/64dbf218e143b878a808a8d0:
     delete:
       tags:
         - Reviews

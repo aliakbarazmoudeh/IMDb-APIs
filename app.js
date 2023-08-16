@@ -31,7 +31,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 // app.use(express.json());
 // app.use(helmet());
 // app.use(xss());
-app.use(cors());
+// app.use(cors());
 app.use(mongoSanitize());
 app.use(cookieParser(process.env.JWT_SECRET));
 
